@@ -88,8 +88,8 @@ int main()
 ```
 
 ## OUTPUT
-Thus, the Vigenère Cipher substitution technique was successfully implemented using C language.
 <BR>
 <img width="456" height="179" alt="image" src="https://github.com/user-attachments/assets/65881cd4-6048-4514-9426-eecc7e6ec793" />
 
 ## RESULT
+Thus, the Vigenère Cipher substitution technique was successfully implemented using C language.
