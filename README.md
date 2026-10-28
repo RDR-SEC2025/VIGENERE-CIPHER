@@ -18,7 +18,7 @@ alphabet shifted cyclically to the left compared to the previous alphabet, corre
 
 
 ## ALGORITHM:
-
+```
 STEP-1: Arrange the alphabets in row and column of a 26*26 matrix.
 STEP-2: Circulate the alphabets in each row to position left such that the first letter is attached to last.
 STEP-3: Repeat this process for all 26 rows and construct the final key matrix.
@@ -27,10 +27,69 @@ STEP-5: The characters in the keyword are repeated sequentially so as to match w
 STEP-6: Pick the first letter of the plain text and that of the keyword as the row indices and column indices respectively.
 STEP-7: The junction character where these two meet forms the cipher character.
 STEP-8: Repeat the above steps to generate the entire cipher text.
-
+```
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main()
+{
+    char plaintext[100], keyword[100];
+    char ciphertext[100], decryptedtext[100];
+    int i, j = 0;
+
+    printf("Enter the Plain Text (in CAPITAL letters): ");
+    scanf("%s", plaintext);
+
+    printf("Enter the Keyword (in CAPITAL letters): ");
+    scanf("%s", keyword);
+
+    int keyLength = strlen(keyword);
+
+    /* Encryption */
+    for (i = 0; plaintext[i] != '\0'; i++)
+    {
+        char p = plaintext[i];
+        char k = keyword[j % keyLength];
+
+        ciphertext[i] = ((p - 'A') + (k - 'A')) % 26 + 'A';
+
+        j++;
+    }
+
+    ciphertext[i] = '\0';
+
+    /* Decryption */
+    j = 0;
+
+    for (i = 0; ciphertext[i] != '\0'; i++)
+    {
+        char c = ciphertext[i];
+        char k = keyword[j % keyLength];
+
+        decryptedtext[i] = ((c - 'A') - (k - 'A') + 26) % 26 + 'A';
+
+        j++;
+    }
+
+    decryptedtext[i] = '\0';
+
+    printf("\nPlain Text      : %s", plaintext);
+    printf("\nKeyword         : %s", keyword);
+    printf("\nCipher Text     : %s", ciphertext);
+    printf("\nDecrypted Text  : %s\n", decryptedtext);
+
+    return 0;
+}
+
+```
 
 ## OUTPUT
+Thus, the Vigenère Cipher substitution technique was successfully implemented using C language.
+<BR>
+<img width="456" height="179" alt="image" src="https://github.com/user-attachments/assets/65881cd4-6048-4514-9426-eecc7e6ec793" />
 
 ## RESULT
